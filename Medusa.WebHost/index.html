@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html ng-app="Medusa">
+<head>
+    <title>MEDUSA Manager</title>
+    <meta charset="utf-8" />
+
+    <link href="css/master.css" rel="stylesheet" />
+    <link href="css/server.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-dialog.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="panelwrap">
+
+        <div class="header">
+            <div class="title"><a href="#">Medusa Manager</a></div>
+
+            <div class="header_right">
+                Welcome Admin, <a href="#" class="logout">
+                    Logout
+                </a>
+            </div>
+
+            <nav-bar></nav-bar>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="content">
+            <div ng-view></div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="footer">
+            Medusa - Website created by <a href="mailto:nhaht2@fsoft.com">NhaHT2 & PhuongNT45</a>
+        </div>
+
+    </div>
+
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/bootstrap-dialog.min.js"></script>
+    <script src="lib/jquery.confirm.min.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+    <script src="lib/angular-resource.min.js"></script>
+    <script src="lib/angular-animate.min.js"></script>
+    <script src="js/controllers/controller.js"></script>
+    <script src="js/controllers/server.js"></script>
+    <script src="js/controllers/member.js"></script>
+    <script src="js/controllers/project.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/directives/nav.js"></script>
+    <script src="js/directives/member-directive.js"></script>
+    <script src="js/services/memberService.js"></script>
+    <script src="js/services/project.js"></script>
+    <script src="js/services/server.js"></script>
+    <script src="js/services/skill.js"></script>
+
+</body>
+
+</html>

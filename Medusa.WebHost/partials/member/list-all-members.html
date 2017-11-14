@@ -1,0 +1,141 @@
+﻿<div ng-controller="MemberController" class="member_button">
+    <input id="Button1" type="button" value="List all member" ng-click="showAllMember()"/>
+    <input id="Button2" type="button" value="Get a member" ng-click="GetMember()"/>
+    <input id="Button3" type="button" value="Add new member" ng-click="showDetailMemberForm()"/>
+    <!--<button> <a href="memberAdd.html">Add new member</a></button>-->
+
+    <br/>
+   
+        <table style="margin-top: 40px" ng-show="modeDisplay=='listMember' || modeDisplay=='both'">
+            <thead>
+            <tr>
+                <td colspan="11"><input type="text" ng-model="keyword" placeholder="Name member"/>
+                <input type="button" value="Search" style="width: 80px; background-color:#4CAF50"/></td> 
+                 
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Address</th>
+                <th>Birth day</th>
+                <th>Email</th>
+                <th>Projects</th>
+                <th>User name</th>
+                <th>Password</th>
+                <th>Action</th>
+            </tr>
+            <tr ng-repeat="mem in members | orderBy : 'Name'| filter:keyword">
+                <td>{{mem.Id}}</td>
+                <td>{{mem.Name}}</td>
+                <td>{{mem.Type}}</td>
+                <td>{{mem.Address}}</td>
+                <td>{{mem.Birthday}}</td>
+                <td>{{mem.Email}} </td>
+                <td>
+                    <div ng-repeat="p in mem.Projects">
+                        {{p.Name}}
+                    </div>
+                </td>
+                <td>{{mem.UserName}}</td>
+                <td>{{mem.Password}} </td>
+                <td>
+                    <input type="button" id="Edit" style="width: 100px" value="Edit" data-ng-click="Edit(mem)"/>
+                    <input type="button" id="Delete" style="width: 100px; color: red" value="Delete" data-ng-click="delete(mem)"/>
+                </td>
+            </tr>
+            </thead>
+
+        </table>
+
+        <table ng-show="modeDisplay=='detailMember'  || modeDisplay=='both'"
+               style="border: solid 4px forestgreen; padding: 2px; width: 800px; margin-left: 200px; margin-top: 30px">
+            <tr>
+                <td></td>
+                <td>
+                    <span>Member Name</span>
+                </td>
+                <td>
+                    <input type="text" id="memberName" data-ng-model="memberInfo.Name" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span>Type</span>
+                </td>
+                <td>
+                    <input type="text" id="type" required data-ng-model="memberInfo.Type" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span>Address</span>
+                </td>
+                <td>
+                    <input type="text" id="address" required data-ng-model="memberInfo.Address" />
+
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span>Birth day</span>
+                </td>
+                <td>
+                    <input type="datetime" id="birthday"  required data-ng-model="memberInfo.Birthday" placeholder="yyyy-MM-dd" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span>Email</span>
+                </td>
+                <td>
+                    <input type="text" id="email" required data-ng-model="memberInfo.Email" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span>Projects</span>
+                </td>
+                <td>
+                    <!--<input type="text" id="projects" required data-ng-model="memberInfo.Projects" />-->
+                    <select ng-model="selected">
+                        <option ng-repeat="x in Projects" value="{{x.Name}}">{{x.Name}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span>User name</span>
+                </td>
+                <td>
+                    <input type="text" id="userName" required data-ng-model="memberInfo.UserName" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span>Password</span>
+                </td>
+                <td>
+                    <input type="text" id="Password" required data-ng-model="memberInfo.Password" />
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="button" style="width: 70px; background-color: green" id="save" value="Save" data-ng-click="saveMember()" />
+
+                    <input type="button" style="width: 70px; background-color: red" id="Clear" value="Clear" data-ng-click="ClearModels()" />
+                </td>
+            </tr>
+        </table>
+</div>
+

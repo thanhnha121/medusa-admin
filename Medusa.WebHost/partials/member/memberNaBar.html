@@ -1,0 +1,14 @@
+﻿
+<div class="member_nav">
+    <ul>
+        <li ng-repeat="item in menus">
+            <button> <a href="{{item.link}}"
+                        ng-class="item.active?'active':''"
+                        ng-click="setActiveMenu(item)">{{item.name}}</a></button>
+        </li>
+
+    </ul>
+</div>
+
+
+   

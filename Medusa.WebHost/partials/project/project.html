@@ -1,0 +1,163 @@
+﻿<div class="serviceTitle">
+    <h3>Project Manager</h3>
+</div>
+
+<div class="center_content">
+
+    <div id="right_wrap">
+        <div id="right_content">
+            <div class="header_table">
+                Project List
+                <a ng-click="reloadClick()" style="cursor: pointer">
+                    <img src="/Images/reload.png" style="width: 30px" />
+                </a>
+                <select ng-options="bc.Name for bc in browseCategorys" ng-model="filterType"></select>
+                <input id="txtFilter" type="text" ng-model="filterInput" placeholder="Type some {{filterType.Name}}" ng-keyup="filter()" />
+            </div>
+
+            <div class="main_table">
+                <table id="rounded-corner">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th ng-repeat="bc in browseCategorys" ng-style="{display: bc.Flag?'':'none'}">{{bc.Name}}</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="odd" ng-repeat="project in curPage">
+                            <td><input type="checkbox" ng-click="deleteCheckBoxClick(project)" /></td>
+                            <td ng-style="{display: browseCategorys[0].Flag?'':'none'}">{{project.Id}}</td>
+                            <td ng-style="{display: browseCategorys[1].Flag?'':'none'}">{{project.Name}}</td>
+                            <td ng-style="{display: browseCategorys[2].Flag?'':'none'}">{{project.StartDate}}</td>
+                            <td ng-style="{display: browseCategorys[3].Flag?'':'none'}">{{project.EndDate}}</td>
+
+                            <td ng-style="{display: (browseCategorys[4].Flag && project.Servers.length <= 1)?'':'none'}">
+                                <div ng-repeat="s in project.Servers">
+                                    {{s.Ip}}
+                                </div>
+                            </td>
+                            <td ng-style="{display: (browseCategorys[4].Flag && project.Servers.length > 1)?'':'none'}">
+                                <a class="viewAllProjects" ng-click="viewAllMembers(project)">
+                                    View {{project.Servers.length}} servers
+                                </a>
+                            </td>
+
+                            <td ng-style="{display: (browseCategorys[5].Flag && project.Members.length <= 1)?'':'none'}">
+                                <div ng-repeat="m in project.Members">
+                                    {{m.Name}}
+                                </div>
+                            </td>
+                            <td ng-style="{display: (browseCategorys[5].Flag && project.Members.length > 1)?'':'none'}">
+                                <a class="viewAllProjects" ng-click="viewAllServers(project)">
+                                    View {{project.Members.length}} members
+                                </a>
+                            </td>
+
+                            <td ng-style="{display: (browseCategorys[6].Flag && project.Skills.length <= 1)?'':'none'}">
+                                <div ng-repeat="s in project.Skills">
+                                    {{s.Name}}
+                                </div>
+                            </td>
+                            <td ng-style="{display: (browseCategorys[6].Flag && project.Skills.length > 1)?'':'none'}">
+                                <a class="viewAllProjects" ng-click="viewSkillClick(project)">
+                                    View {{project.Skills.length}} skills
+                                </a>
+                            </td>
+
+                            <td><a ng-click="editClick(project)" style="cursor: pointer"><img src="/Images/edit.png" /></a></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div class="form_sub_buttons" style="float: right">
+                <a ng-repeat="page in pages" class="{{page.IsActive?'button red':'button green'}}" ng-click="pageClick(page)">{{page.PageNum}}</a>
+            </div>
+
+            <div class="form_sub_buttons">
+                <a class="button green" ng-click="addNewServerClick()">Add New Server</a>
+                <a class="button red" ng-click="deleteClick()">Delete Selected</a>
+            </div>
+
+            <div id="addEditTab" ng-style="{display: isAddOrEdit?'':'none'}">
+                <ul id="tabsmenu" class="tabsmenu">
+                    <li class="active"><a href="#tabsmenu">Add New Server Form</a></li>
+                </ul>
+                <div class="tabcontent">
+                    <div class="form">
+
+                        <div class="form_row">
+                            <label>Id:</label>
+                            <input type="text" class="form_input" ng-model="newId" disabled="disabled" />
+                        </div>
+
+                        <div class="form_row">
+                            <label>Ip:</label>
+                            <input type="text" class="form_input" ng-model="newIp" />
+                        </div>
+
+                        <div class="form_row">
+                            <label>SystemOS:</label>
+                            <select class="form_select" ng-model="newSystemOS" ng-options="soso for soso in systemOSOptions"></select>
+                        </div>
+
+                        <div class="form_row">
+                            <label>Type:</label>
+
+                            <select class="form_select" ng-model="newType" ng-options="to for to in typeOptions"></select>
+                        </div>
+
+                        <div class="form_row">
+                            <label>Project:</label>
+                            <div class="form_oldProject">
+                                <div ng-repeat="p in oldProjects">
+                                    {{p.Name}}<a ng-click="removeOldProject(p)" style="cursor: pointer">
+                                        <img src="/Images/logout.png" style="width: 10px" />
+                                    </a>
+                                </div>
+                                <select class="form_select" ng-model="assignNewProjectSelected" ng-options="ap.Name for ap in FakeAvailableProjects"></select>
+                                <br />
+                                <a style="cursor: pointer; text-decoration: underline" ng-click="assignNewProject()">Assign</a>
+                            </div>
+                        </div>
+                        <div class="form_row">
+                            <label>Descriptions:</label>
+                            <textarea class="form_textarea" ng-model="newDescriptions"></textarea>
+                        </div>
+                        <div class="form_row">
+                            <input type="submit" class="form_submit" value="Submit" ng-click="submitClick()" />
+                            <input type="submit" class="form_cancel" value="Cancel" ng-click="cancelBtnClick()" />
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end of right content-->
+
+
+    <div class="sidebar" id="sidebar">
+        <h2>Browse categories</h2>
+
+        <ul>
+            <li ng-repeat="bc in browseCategorys">
+                <input type="checkbox" ng-click="changeBrowseCategory(bc)" ng-checked="bc.Flag?'checked':''" />
+                {{bc.Name}}
+            </li>
+        </ul>
+
+        <h2>About this page</h2>
+        <div class="sidebar_section_text">
+
+        </div>
+
+    </div>
+
+
+    <div class="clear"></div>
+</div> <!--end of center_content-->

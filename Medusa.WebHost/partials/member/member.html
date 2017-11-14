@@ -1,0 +1,152 @@
+﻿<!--<div ng-controller="MemberController" class="member_content">
+    <member-nav-bar></member-nav-bar>
+    
+    <member-content-listall></member-content-listall>
+
+    <member-add></member-add>
+</div>-->
+
+<div class="serviceTitle">
+    <h3>Member management</h3>
+</div>
+ <!-- Member content -->
+<div class="center_content" ng-controller="MemberController">
+
+    <div id="right_wrap">
+        <div id="right_content">
+            <div class="header_table">
+                Members Table
+                <select>
+                    <option ng-repeat="mem in browseCategorys" ng-style="{display: mem.Flag?'':'none'}">{{mem.Name}}</option>
+                </select>    
+                <input  type="text" placeholder="Name member" />  
+                       
+            </div>
+            <table id="rounded-corner">
+                <thead>
+                    
+                    <tr>
+                        <th></th>
+                        <th>Index</th>
+                        <th ng-repeat="mem in browseCategorys" ng-style="{display: mem.Flag?'':'none'}">{{mem.Name}}</th>
+                        <th>Edit</th>
+                    </tr>
+                
+                </thead>
+                <tfoot>
+                <tr>
+                    <td colspan="12"></td>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr ng-repeat="mem in curPage | orderBy : 'Name'| filter:keyword" class="odd">
+                    <td><input type="checkbox" name=""/></td>
+                    <td ng-style="{display: browseCategorys[0].Flag?'':'none'}">{{ $index + 1 }}</td>
+                    <td ng-style="{display: browseCategorys[1].Flag?'':'none'}">{{mem.Name}}</td>
+                    <td ng-style="{display: browseCategorys[2].Flag?'':'none'}">{{mem.UserName}}</td>
+                    <td ng-style="{display: browseCategorys[3].Flag?'':'none'}">{{mem.Type}}</td>
+                    <td ng-style="{display: browseCategorys[4].Flag?'':'none'}">{{mem.Address}}</td>
+                    <td ng-style="{display: browseCategorys[5].Flag?'':'none'}">{{mem.Birthday}}</td>
+                    <td ng-style="{display: browseCategorys[6].Flag?'':'none'}">{{mem.Email}}</td>
+                    <td>
+                        <div ng-repeat="p in mem.Projects">
+                            {{p.Name}}
+                        </div>
+                    </td>
+                    <td><a ng-modle="myVar"><img src="Images/edit.png" alt="" title="" border="0"/></a></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="form_sub_buttons" style="float: right">
+                <a ng-repeat="page in pages" class="{{page.IsActive?'button red':'button green'}}" ng-click="pageClick(page)">{{page.PageNum}}</a>
+            </div>
+            <!-- Button add a member -->
+            <div class="form_add_buttons">
+                <a class="button green" ng-click="myClick()">Add member</a>
+
+            </div>
+            <div class="form_add_buttons">
+                <a class="button green" ng-modle="myVar">Add member test</a>
+
+            </div>
+            <!-- Button delete members -->
+            <div class="form_sub_buttons">
+                <a href="#" class="button red">Delete selected</a>
+            </div>
+            <!-- Form to add Member -->
+            <div ng-show="myVar">
+                <ul id="tabsmenu" class="tabsmenu">
+                    <li class="active"><a href="#tab1">Form add member</a></li>
+                </ul>
+                <div id="tab1" class="tabcontent">
+                    <h3>Tab add and edit one member</h3>
+                    <div class="form">
+
+                        <div class="form_row">
+                            <label>Name:</label>
+                            <input type="text" class="form_input" id="memberName" data-ng-model="memberInfo.Name"/>
+                        </div>
+
+                        <div class="form_row">
+                            <label>User name:</label>
+                            <input type="text" class="form_input" id="userName" data-ng-model="memberInfo.UserName"/>
+                        </div>
+
+                        <div class="form_row">
+                            <label>Type:</label>
+                            <input type="text" class="form_input" id="type" data-ng-model="memberInfo.Type"/>
+                        </div>
+
+                        <div class="form_row">
+                            <label>Address:</label>
+                            <input type="text" class="form_input" id="address" data-ng-model="memberInfo.Address"/>
+                        </div>
+                        <div class="form_row">
+                            <label>Birthday:</label>
+                            <input type="text" class="form_input" id="birthday" data-ng-model="memberInfo.Birthday"/>
+                        </div>
+                        <div class="form_row">
+                            <label>Email:</label>
+                            <input type="text" class="form_input" id="email" data-ng-model="memberInfo.Email"/>
+                        </div>
+
+                        <div class="form_row">
+                            <label>Projects:</label>
+                            <select class="form_select" name="" ng-model="selected">
+                                <option value="" ng-show="false">Select one</option>
+                                <option ng-repeat="x in Projects" value="{{x.Name}}">{{x.Name}}</option>
+                            </select>
+                        </div>
+                        <div class="form_row">
+                            <input type="submit" class="form_submit" value="Submit" ng-click="submitMember()"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end of right content-->
+
+
+    <div class="sidebar" id="sidebar">
+        <h2>Browse categories</h2>
+
+        <ul>
+            <li ng-repeat="mem in browseCategorys">
+                <input type="checkbox" ng-click="changeBrowseCategory(mem)" checked />
+                {{mem.Name}}
+            </li>
+        </ul>
+
+
+
+        <h2>Text Section</h2>
+        <div class="sidebar_section_text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+
+    </div>
+
+
+    <div class="clear"></div>
+</div> <!--end of center_content-->

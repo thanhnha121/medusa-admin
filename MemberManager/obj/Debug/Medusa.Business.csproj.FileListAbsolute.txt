@@ -1,0 +1,13 @@
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\bin\Debug\Medusa.Business.dll.config
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\bin\Debug\Medusa.Business.dll
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\bin\Debug\Medusa.Business.pdb
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\bin\Debug\EntityFramework.dll
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\bin\Debug\EntityFramework.SqlServer.dll
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\bin\Debug\EntityFramework.xml
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\bin\Debug\EntityFramework.SqlServer.xml
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\obj\Debug\Medusa.Business.csprojResolveAssemblyReference.cache
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\obj\Debug\Medusa.Business.Migrations.firstVer.resources
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\obj\Debug\Medusa.Business.Properties.Resources.resources
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\obj\Debug\Medusa.Business.csproj.GenerateResource.Cache
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\obj\Debug\Medusa.Business.dll
+D:\SVN_PhuongNT45_Training\trunk\MemberManager\obj\Debug\Medusa.Business.pdb

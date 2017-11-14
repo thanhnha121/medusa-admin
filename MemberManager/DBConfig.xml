@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <database>
+    <connectionString>
+      Server=10.16.38.129;Database=Phuong;User Id=sa;Password=admin@123;MultipleActiveResultSets=true;
+    </connectionString>
+  </database>
+</configuration>

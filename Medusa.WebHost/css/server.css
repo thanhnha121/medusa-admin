@@ -1,0 +1,12 @@
+﻿.viewAllProjects {
+    cursor: pointer;
+    color: blue;
+}
+
+    .viewAllProjects:hover {
+        color: #ff6a00;
+    }
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+}

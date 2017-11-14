@@ -1,0 +1,9 @@
+<div class="menu">
+    <ul>
+        <li ng-repeat="item in menus">
+            <a href="{{item.link}}"
+               ng-class="item.active?'selected':''"
+               ng-click="setActiveMenu(item)">{{item.name}}</a>
+        </li>
+    </ul>
+</div>

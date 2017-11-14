@@ -1,0 +1,41 @@
+﻿<div ng-controller="MemberController" class="member_button">
+    <input id="Button1" type="button" value="List all member" ng-click="getAllMember()"/>
+    <input id="Button2" type="button" value="Get a member" ng-click="GetMember()"/>
+    <input id="Button3" type="button" value="Add new member" ng-click="AddMember()"/>
+    <button> <a href="memberAdd.html">Add new member</a></button>
+
+    <br/>
+    <table style="margin-top: 40px">
+        <thead>
+        <tr>
+
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Address</th>
+            <th>Birth day</th>
+            <th>Email</th>
+            <th>User name</th>
+            <th>Password</th>
+            <th>Action</th>
+        </tr>
+
+        <tr ng-repeat="mem in members">
+            <td>{{mem.Id}}</td>
+            <td>{{mem.Name}}</td>
+            <td>{{mem.Type}}</td>
+            <td>{{mem.Address}}</td>
+            <td>{{mem.Birthday}}</td>
+            <td>{{mem.Email}} </td>
+            <td>{{mem.UserName}}</td>
+            <td>{{mem.Password}} </td>
+            <td>
+                <input type="button" id="Edit" value="Edit" data-ng-click="Edit(mem)"/>
+                <input type="button" id="Delete" value="Delete" data-ng-click="delete(mem)"/>
+            </td>
+        </tr>
+        </thead>
+
+    </table>
+</div>
+
